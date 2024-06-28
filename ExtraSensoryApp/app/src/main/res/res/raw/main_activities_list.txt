@@ -1,0 +1,6 @@
+Lying down
+Sitting
+Standing
+Walking
+Running
+Bicycling
