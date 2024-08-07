@@ -1,3 +1,4 @@
+
 plugins {
     alias(libs.plugins.android.application)
 }
@@ -5,6 +6,8 @@ plugins {
 android {
     namespace = "com.example.phonesensorreader"
     compileSdk = 34
+
+
 
     defaultConfig {
         applicationId = "com.example.phonesensorreader"
@@ -25,15 +28,18 @@ android {
             )
         }
     }
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }
 
 
 dependencies {
 
+    implementation("com.jjoe64:graphview:4.2.2")
+    implementation ("com.squareup.okhttp3:okhttp:4.9.2")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
