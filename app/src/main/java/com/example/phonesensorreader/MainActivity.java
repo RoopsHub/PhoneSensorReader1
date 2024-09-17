@@ -19,8 +19,6 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 import com.jjoe64.graphview.series.Series;
 
-import java.util.Arrays;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -69,7 +67,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Set titles for the graphs
         graphAcc.setTitle("Accelerometer");
+        graphAcc.setTitleColor(0xFF000000);
         graphGyro.setTitle("Gyroscope");
+        graphGyro.setTitleColor(0xFF000000);
 
         // Set manual X bounds
         setupGraphView(graphAcc);
@@ -141,7 +141,9 @@ public class MainActivity extends AppCompatActivity {
         graph.getViewport().setScalableY(true);
         graph.getViewport().setScrollableY(true);
         graph.getGridLabelRenderer().setHorizontalAxisTitle("Time (s)");
+        graph.getGridLabelRenderer().setHorizontalAxisTitleColor(0xFF000000);
         graph.getGridLabelRenderer().setVerticalAxisTitle("Value");
+        graph.getGridLabelRenderer().setVerticalAxisTitleColor(0xFF000000);
         graph.getGridLabelRenderer().setVerticalLabelsColor(0xFF000000);
         graph.getGridLabelRenderer().setHorizontalLabelsColor(0xFF000000);
         graph.getLegendRenderer().setVisible(true);
@@ -151,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        registerReceiver(sensorDataReceiver, new IntentFilter(PhoneSensorService.ACTION_SENSOR_DATA));
+        registerReceiver(sensorDataReceiver, new IntentFilter(PhoneSensorService.ACTION_SENSOR_DATA),RECEIVER_EXPORTED);
     }
 
     @Override

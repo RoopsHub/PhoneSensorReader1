@@ -2,4 +2,20 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <!-- Theme Nuance Colors -->
+    <color name="theme_nuance_color_1">#71b3b8</color> <!-- hsl(178.7, 25.1%, 64.9%) -->
+    <color name="theme_nuance_color_2">#74c5d5</color> <!-- hsl(193.3, 43.4%, 67.5%) -->
+    <color name="theme_nuance_color_3">#7293b5</color> <!-- hsl(210.0, 34.0%, 63.1%) -->
+
+    <!-- Primary Colors -->
+    <color name="primary_color_1">#eaf0f8</color> <!-- hsl(217.5, 26.7%, 94.1%) -->
+    <color name="primary_color_2">#e2e9f4</color> <!-- hsl(218.2, 26.8%, 92.0%) -->
+    <color name="primary_color_3">#d6dff0</color> <!-- hsl(218.8, 27.9%, 88.0%) -->
+    <color name="primary_color_4">#c6d0e3</color> <!-- hsl(218.8, 18.3%, 81.8%) -->
+
+    <!-- Secondary Colors -->
+    <color name="secondary_color_1">#2e3549</color> <!-- hsl(220.0, 16.4%, 21.6%) -->
+    <color name="secondary_color_2">#3b445d</color> <!-- hsl(221.7, 16.3%, 27.6%) -->
+    <color name="secondary_color_3">#445070</color> <!-- hsl(220.0, 16.8%, 31.6%) -->
+    <color name="secondary_color_4">#4d5979</color> <!-- hsl(220.0, 16.5%, 35.7%) -->
 </resources>

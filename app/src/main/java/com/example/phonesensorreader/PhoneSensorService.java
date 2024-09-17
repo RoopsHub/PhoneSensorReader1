@@ -84,6 +84,9 @@ public class PhoneSensorService extends Service implements SensorEventListener {
                 sensorManager.registerListener(this, gyroscope, SAMPLING_INTERVAL_MICROSECONDS);
             }
         }
+        int processor= Runtime.getRuntime().availableProcessors();
+        Log.d(LOG_TAG, "Number of CPU core processors="+processor);
+
         // Acquire a partial wake lock to keep the CPU running even when the screen is off
         PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
         if (powerManager != null) {
@@ -255,18 +258,14 @@ public class PhoneSensorService extends Service implements SensorEventListener {
     private void sendSensorDataToWebView() {
         try {
 
-            String systemPrompt = "Q: Based on the readings from the accelerometer (ACCX, ACCY, ACCZ) and gyroscope sensors (GYROX, GYROY, GYROZ). can we determine if the user is running, walking, or sitting?" +
-                    "Here are some key points to consider for each activity:" +
-                    "AccX=0.885337, AccY=2.491991, AccZ=9.620627, GyroX=0.012555, GyroY=-0.016721, GyroZ=-0.007155?" +
-                    "A: You are currently in a sitting position." +
-                    "Q: Generate some quick exercises to do to get the blood flowing again after a long time of sitting?" +
-                    "A: Here are some quick exercises to get your blood flowing after sitting:" +
-                    "Seated Marches: Lift your knees alternately while seated for 1-2 minutes." +
-                    "Chair Twists: Sit up straight and twist your torso to each side for 3-5 times." +
-                    "Neck Rolls: Roll your head in circles for 30 seconds in each direction." +
-                    "Q: Based on the readings from the accelerometer (ACCX, ACCY, ACCZ) and gyroscope sensors (GYROX, GYROY, GYROZ). can we determine if the user is running, walking, or sitting?";
-                    String accData = "ACC_X:" + avgAccX + ",ACC_Y:" + avgAccY + ",ACC_Z:" + avgAccZ;
-                    String gyroData = ",GYRO_X:" + avgGyroX + ",GYRO_Y:" + avgGyroY + ",GYRO_Z:" + avgGyroZ;
+            String systemPrompt = "Objective: You are predicting user activity as walking, running, or sitting based on sensor data inputs. " +
+                    "Background: Data was collected  using the smartphones inbuilt motion sensors over a specific time. The resulting data was consolidated into a single dataset for analysis, as shown in the Sensor Data Input below. " +
+                    "Sensor details: We collect raw sensor data from accelerometer and gyroscope " +
+                    "Accelerometer measures linear acceleration in three dimensions (Acc X, Acc Y, Acc Z) typically measured in meters per second squared (m/s²) " +
+                    "Gyroscope measures rotational velocity in three axes (Gyro X, Gyro Y and Gyro Z)typically measured in degrees per second (°/s). " +
+                    "Sensor data input: ";
+                    String accData = "ACC_X:" + avgAccX + " m/s², ACC_Y:" + avgAccY + " m/s², ACC_Z:" + avgAccZ;
+                    String gyroData = " m/s², GYRO_X:" + avgGyroX + " °/s, GYRO_Y:" + avgGyroY + " °/s, GYRO_Z:" + avgGyroZ +" °/s";
 
             String fullPrompt = systemPrompt + " " + accData + gyroData;
             Log.d(LOG_TAG, "Prepared sensor data JSON: " + fullPrompt);
